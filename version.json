@@ -1,0 +1,6 @@
+{
+  "version": "1.0.0",
+  "download_url": "https://github.com/YOUR_GITHUB_USERNAME/mumiopad-web/releases/latest/download/MumiopadSetup.exe",
+  "apk_url": "https://github.com/YOUR_GITHUB_USERNAME/mumiopad-web/releases/latest/download/Mumiopad.apk",
+  "changelog": "初始化版本發布"
+}
