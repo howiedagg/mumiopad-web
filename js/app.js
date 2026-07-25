@@ -1,24 +1,21 @@
 /**
- * Mumiopad - 全域集中配置 (連結、路徑統一管理，拒絕硬編碼)
+ * Mumiopad - 主程式腳本
  */
 const CONFIG = {
   githubUrl: 'https://github.com/howiedagg/Mumiopad',
   docUrl: 'https://github.com/howiedagg/Mumiopad/blob/main/README_zh.md',
   playStoreUrl: 'https://play.google.com/store/apps/details?id=com.mumiopad.app',
+  defaultDownloadUrl: 'https://github.com/howiedagg/mumiopad-web/releases/latest/download/MumiopadSetup.exe',
   versionJsonUrl: './version.json'
 };
 
 let latestVersionData = null;
 
-// 動態更新 Windows 下載按鈕文案
 window.refreshDownloadButtonText = function() {
   const winBtnText = document.getElementById('winBtnText');
   if (!winBtnText) return;
 
-  // 1. 100% 調用 i18n 字典，絕無硬編碼文字
   const baseText = translations[currentLang]?.downloadWin || '';
-
-  // 2. 若抓到動態版號則附加版號，否則顯示基礎文案
   if (latestVersionData && latestVersionData.version) {
     winBtnText.innerText = `${baseText} (v${latestVersionData.version})`;
   } else {
@@ -26,41 +23,40 @@ window.refreshDownloadButtonText = function() {
   }
 };
 
-// 抓取線上最新的 version.json
 async function fetchLatestVersion() {
+  // 先把按鈕網址預設設為 latest 固定網址
+  const winBtn = document.getElementById('winDownloadBtn');
+  if (winBtn) winBtn.href = CONFIG.defaultDownloadUrl;
+
   try {
     const res = await fetch(`${CONFIG.versionJsonUrl}?t=${Date.now()}`);
     if (!res.ok) return;
     const data = await res.json();
-    if (data.version && data.download_url) {
+    if (data.version) {
       latestVersionData = data;
-      const winBtn = document.getElementById('winDownloadBtn');
-      if (winBtn) winBtn.href = data.download_url;
+      // 如果 version.json 裡面有特別指定特定的 download_url 就覆蓋，否則繼續用 latest 網址
+      if (data.download_url) winBtn.href = data.download_url;
       window.refreshDownloadButtonText();
     }
   } catch (e) {
-    console.log('Using default static download URL.');
+    console.log('Using fallback latest URL.');
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. 動態綁定所有全域外部連結 (如 GitHub, Play Store, 文件)
+  // 綁定外部連結
   document.querySelectorAll('[data-config-link]').forEach(el => {
     const key = el.getAttribute('data-config-link');
     if (CONFIG[key]) el.href = CONFIG[key];
   });
 
-  // 2. 初始化多國語言介面
   updateLanguageUI();
 
-  // 3. 動態取得與更新年份
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.innerText = new Date().getFullYear();
 
-  // 4. 綁定語言切換按鈕事件
   const langBtn = document.getElementById('langBtn');
   if (langBtn) langBtn.addEventListener('click', toggleLanguage);
 
-  // 5. 抓取遠端最新版號
   fetchLatestVersion();
 });

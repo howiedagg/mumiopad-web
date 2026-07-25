@@ -8,6 +8,8 @@
   --text: #FFFFFF;
   --text-muted: #94A3B8;
   --tag-bg: #221D30;
+  --kbd-bg: #2A243D;
+  --kbd-border: #42385F;
 }
 
 * {
@@ -24,7 +26,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background-image: 
-    radial-gradient(rgba(210, 191, 255, 0.06) 1px, transparent 1px),
+    radial-gradient(rgba(210, 191, 255, 0.05) 1px, transparent 1px),
     radial-gradient(circle at 80% 20%, rgba(210, 191, 255, 0.08) 0%, transparent 40%);
   background-size: 28px 28px, 100% 100%;
 }
@@ -79,11 +81,11 @@ header {
   background: var(--surface);
   border: 1px solid var(--border);
   color: var(--text);
-  padding: 8px 14px;
+  padding: 8px 16px;
   border-radius: 20px;
   cursor: pointer;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   transition: all 0.2s;
 }
 
@@ -94,6 +96,8 @@ header {
 
 .github-link {
   color: var(--text-muted);
+  display: flex;
+  align-items: center;
   transition: color 0.2s;
 }
 
@@ -147,7 +151,14 @@ header {
   font-weight: 500;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  color: #E2E8F0;
+}
+
+.tag svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--accent);
 }
 
 .cta-buttons {
@@ -163,15 +174,24 @@ header {
   font-size: 16px;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   transition: all 0.2s;
   cursor: pointer;
   border: none;
 }
 
+.btn svg {
+  width: 20px;
+  height: 20px;
+}
+
 .btn-primary {
   background: var(--accent);
   color: #121019;
+}
+
+.btn-primary svg {
+  fill: #121019;
 }
 
 .btn-primary:hover {
@@ -183,6 +203,10 @@ header {
   background: var(--surface);
   color: var(--text);
   border: 1px solid var(--border);
+}
+
+.btn-secondary svg {
+  fill: var(--text);
 }
 
 .btn-secondary:hover {
@@ -212,7 +236,7 @@ header {
 .section-title {
   font-size: 28px;
   font-weight: 800;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   text-align: center;
 }
 
@@ -235,9 +259,22 @@ header {
   border-color: var(--accent);
 }
 
-.feature-icon {
-  font-size: 32px;
-  margin-bottom: 16px;
+.feature-icon-box {
+  width: 48px;
+  height: 48px;
+  background: var(--tag-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.feature-icon-box svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--accent);
 }
 
 .feature-title {
@@ -251,34 +288,219 @@ header {
   font-size: 15px;
 }
 
-.gestures-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  margin-bottom: 80px;
+/* 分類手勢專區 */
+.gesture-category-block {
+  margin-bottom: 60px;
 }
 
-.gesture-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-}
-
-.gesture-header {
+.category-title-box {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  font-size: 20px;
   font-weight: 700;
-  margin-bottom: 6px;
+  margin-bottom: 20px;
   color: var(--accent);
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(210, 191, 255, 0.15);
 }
 
-.gesture-action {
-  font-size: 14px;
+.category-title-box svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--accent);
+}
+
+.motion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.motion-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  transition: all 0.2s;
+}
+
+.motion-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* 觸控板模擬繪圖區域 */
+.touchpad-canvas {
+  width: 72px;
+  height: 72px;
+  background: #121019;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.motion-info {
+  flex-grow: 1;
+}
+
+.motion-title {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.motion-desc {
+  font-size: 13px;
   color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
+.kbd {
+  background: var(--kbd-bg);
+  border: 1px solid var(--kbd-border);
+  color: var(--accent);
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ─── 16 種純 CSS 向量微動畫定義 ─── */
+.dot {
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0 0 8px rgba(210, 191, 255, 0.6);
+}
+
+/* 1. 單指滑動 */
+.anim-move .dot {
+  animation: moveCircle 2.5s infinite linear;
+}
+@keyframes moveCircle {
+  0% { transform: translate(-14px, -14px); }
+  25% { transform: translate(14px, -14px); }
+  50% { transform: translate(14px, 14px); }
+  75% { transform: translate(-14px, 14px); }
+  100% { transform: translate(-14px, -14px); }
+}
+
+/* 2. 單指點擊 */
+.anim-tap .dot {
+  animation: tapPulse 1.4s infinite ease-in-out;
+}
+@keyframes tapPulse {
+  0%, 100% { transform: scale(0.9); opacity: 0.3; }
+  50% { transform: scale(1.6); opacity: 1; box-shadow: 0 0 14px var(--accent); }
+}
+
+/* 3. 單指長按拖曳 */
+.anim-drag .dot {
+  animation: dragHold 2.2s infinite ease-in-out;
+}
+@keyframes dragHold {
+  0% { transform: translate(-16px, 0) scale(1); opacity: 0.4; }
+  30% { transform: translate(-16px, 0) scale(1.6); opacity: 1; box-shadow: 0 0 14px var(--accent); }
+  70%, 100% { transform: translate(16px, 0) scale(1.2); opacity: 1; }
+}
+
+/* 4. 雙指點擊 (右鍵) */
+.anim-2tap .d1 { left: 24px; animation: tapPulse 1.4s infinite ease-in-out; }
+.anim-2tap .d2 { right: 24px; animation: tapPulse 1.4s infinite ease-in-out; }
+
+/* 5. 四指點擊 (中鍵) */
+.anim-4tap .d1 { left: 22px; top: 22px; animation: tapPulse 1.4s infinite ease-in-out; }
+.anim-4tap .d2 { right: 22px; top: 22px; animation: tapPulse 1.4s infinite ease-in-out; }
+.anim-4tap .d3 { left: 22px; bottom: 22px; animation: tapPulse 1.4s infinite ease-in-out; }
+.anim-4tap .d4 { right: 22px; bottom: 22px; animation: tapPulse 1.4s infinite ease-in-out; }
+
+/* 6. 按住一指 + 第二指輕點 */
+.anim-sec-tap .d1 { left: 22px; opacity: 0.9; }
+.anim-sec-tap .d2 { right: 22px; animation: tapPulse 1.4s infinite ease-in-out; }
+
+/* 7. 按住一指 + 第二指長按拖曳 */
+.anim-sec-drag .d1 { left: 20px; opacity: 0.9; }
+.anim-sec-drag .d2 { right: 26px; animation: secDrag 2s infinite ease-in-out; }
+@keyframes secDrag {
+  0% { transform: translateY(-12px) scale(1); opacity: 0.4; }
+  30% { transform: translateY(-12px) scale(1.5); opacity: 1; }
+  80%, 100% { transform: translateY(12px) scale(1.2); opacity: 1; }
+}
+
+/* 8. 按住一指 + 第二指上下滑動 */
+.anim-sec-scroll .d1 { left: 20px; opacity: 0.9; }
+.anim-sec-scroll .d2 { right: 22px; animation: vertSlide 1.8s infinite ease-in-out; }
+@keyframes vertSlide {
+  0%, 100% { transform: translateY(-14px); opacity: 0.4; }
+  50% { transform: translateY(14px); opacity: 1; }
+}
+
+/* 9. 按住一指 + 第二指左右刷動 */
+.anim-sec-swipe .d1 { top: 20px; left: 31px; opacity: 0.9; }
+.anim-sec-swipe .d2 { bottom: 20px; animation: horiSlide 1.8s infinite ease-in-out; }
+@keyframes horiSlide {
+  0%, 100% { transform: translateX(-14px); opacity: 0.4; }
+  50% { transform: translateX(14px); opacity: 1; }
+}
+
+/* 10. 雙指上下滑動 */
+.anim-scroll .d1 { left: 26px; animation: vertSlide 1.8s infinite ease-in-out; }
+.anim-scroll .d2 { right: 26px; animation: vertSlide 1.8s infinite ease-in-out; }
+
+/* 11. 雙指左右刷動 */
+.anim-swipe-hori .d1 { top: 26px; animation: horiSlide 1.8s infinite ease-in-out; }
+.anim-swipe-hori .d2 { bottom: 26px; animation: horiSlide 1.8s infinite ease-in-out; }
+
+/* 12. 雙指捏合/張開 */
+.anim-zoom .d1 { animation: zoomInLeft 2s infinite ease-in-out; }
+.anim-zoom .d2 { animation: zoomInRight 2s infinite ease-in-out; }
+@keyframes zoomInLeft { 0%, 100% { transform: translateX(-12px); } 50% { transform: translateX(10px); } }
+@keyframes zoomInRight { 0%, 100% { transform: translateX(12px); } 50% { transform: translateX(-10px); } }
+
+/* 13. 三指輕點 */
+.anim-3tap .d1 { left: 18px; animation: tapPulse 1.4s infinite ease-in-out; }
+.anim-3tap .d2 { animation: tapPulse 1.4s infinite ease-in-out; }
+.anim-3tap .d3 { right: 18px; animation: tapPulse 1.4s infinite ease-in-out; }
+
+/* 14. 三指上下滑動 */
+.anim-3vert .d1 { left: 18px; animation: vertSlide 1.8s infinite ease-in-out; }
+.anim-3vert .d2 { animation: vertSlide 1.8s infinite ease-in-out; }
+.anim-3vert .d3 { right: 18px; animation: vertSlide 1.8s infinite ease-in-out; }
+
+/* 15. 三指左右滑動 */
+.anim-3hori .d1 { top: 18px; animation: horiSlide 1.8s infinite ease-in-out; }
+.anim-3hori .d2 { animation: horiSlide 1.8s infinite ease-in-out; }
+.anim-3hori .d3 { bottom: 18px; animation: horiSlide 1.8s infinite ease-in-out; }
+
+/* 16. 音量鍵 */
+.anim-vol .vol-icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--accent);
+  animation: volPulse 1.2s infinite ease-in-out;
+}
+@keyframes volPulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.3); opacity: 1; }
+}
+
+/* FAQ */
 .faq-container {
   max-width: 800px;
   margin: 0 auto 80px;
@@ -297,11 +519,22 @@ header {
   font-size: 16px;
   margin-bottom: 8px;
   color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.faq-q svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--accent);
+  flex-shrink: 0;
 }
 
 .faq-a {
   font-size: 14px;
   color: var(--text-muted);
+  padding-left: 28px;
 }
 
 /* Footer */

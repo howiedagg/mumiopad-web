@@ -10,7 +10,7 @@
 <body>
 
   <div class="container">
-    <!-- Header / Nav -->
+    <!-- Header -->
     <header>
       <div class="brand">
         <div class="brand-icon">
@@ -23,7 +23,6 @@
       </div>
       <div class="nav-actions">
         <button class="lang-btn" id="langBtn">繁體中文</button>
-        <!-- 使用 data-config-link 替代硬編碼 URL -->
         <a data-config-link="githubUrl" target="_blank" class="github-link" title="GitHub Repository" rel="noopener">
           <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         </a>
@@ -38,19 +37,27 @@
         <p class="hero-desc" data-i18n="heroDesc"></p>
         
         <div class="tags">
-          <span class="tag">⚡ Wi-Fi</span>
-          <span class="tag">ᛒ Bluetooth</span>
-          <span class="tag">✨ Multi-Touch</span>
+          <span class="tag">
+            <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.22 19.57 10.57 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+            Wi-Fi LAN
+          </span>
+          <span class="tag">
+            <svg viewBox="0 0 24 24"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 11 14.41V22h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/></svg>
+            Bluetooth HID
+          </span>
+          <span class="tag">
+            <svg viewBox="0 0 24 24"><path d="M9 11.24V7.5a2.5 2.5 0 0 1 5 0v3.74c1.21-.81 2-2.18 2-3.74A4.5 4.5 0 0 0 7 7.5c0 1.56.79 2.93 2 3.74zM18 13h-1.26A6.98 6.98 0 0 0 12 4.08 6.98 6.98 0 0 0 7.26 13H6c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3c0-1.1-.9-2-2-2z"/></svg>
+            Multi-Touch
+          </span>
         </div>
 
         <div class="cta-buttons">
           <a id="winDownloadBtn" href="MumiopadSetup.exe" class="btn btn-primary">
-            <span>💻</span>
+            <svg viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801"/></svg>
             <span id="winBtnText" data-i18n="downloadWin"></span>
           </a>
-          <!-- 使用 data-config-link 自動帶入 Play Store 連結 -->
           <a id="playStoreBtn" data-config-link="playStoreUrl" target="_blank" class="btn btn-secondary" rel="noopener">
-            <span>📱</span>
+            <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.791 12 3.61 22.186a1.432 1.432 0 0 1-.61-.921V2.735c0-.361.218-.682.609-.921zm11.233 11.233l2.84 2.84-12.015 6.938 9.175-9.778zm0-2.094L5.667 1.175l12.015 6.938-2.84 2.84zm3.921 1.047a1.442 1.442 0 0 1 0 1.998l-2.094 2.094-2.84-2.84 2.84-2.84 2.094 2.094z"/></svg>
             <span data-i18n="googlePlay"></span>
           </a>
         </div>
@@ -69,43 +76,133 @@
     <h2 class="section-title" data-i18n="featureTitle"></h2>
     <div class="grid-2">
       <div class="feature-card">
-        <div class="feature-icon">📶</div>
+        <div class="feature-icon-box">
+          <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.22 19.57 10.57 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+        </div>
         <div class="feature-title" data-i18n="wifiTitle"></div>
         <div class="feature-desc" data-i18n="wifiDesc"></div>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">ᛒ</div>
+        <div class="feature-icon-box">
+          <svg viewBox="0 0 24 24"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 11 14.41V22h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/></svg>
+        </div>
         <div class="feature-title" data-i18n="btTitle"></div>
         <div class="feature-desc" data-i18n="btDesc"></div>
       </div>
     </div>
 
-    <!-- Gestures -->
+    <!-- 🎬 分類且全項目 100% 動畫展示專區 -->
     <h2 class="section-title" data-i18n="gestureTitle"></h2>
-    <div class="gestures-grid">
-      <div class="gesture-card">
-        <div class="gesture-header">👆 <span data-i18n="g1Finger"></span></div>
-        <div class="gesture-action" data-i18n="g1FingerAct"></div>
+
+    <!-- 分類 1：基礎滑鼠操控 -->
+    <div class="gesture-category-block">
+      <div class="category-title-box">
+        <svg viewBox="0 0 24 24"><path d="M13 1.07V9h7c0-4.08-3.05-7.44-7-7.93zM4 15c0 4.42 3.58 8 8 8s8-3.58 8-8v-4H4v4zm7-13.93C7.05 1.56 4 4.92 4 9h7V1.07z"/></svg>
+        <span data-i18n="catBasic"></span>
       </div>
-      <div class="gesture-card">
-        <div class="gesture-header">👆 <span data-i18n="g1Hold"></span></div>
-        <div class="gesture-action" data-i18n="g1HoldAct"></div>
+      <div class="motion-grid">
+        <div class="motion-card">
+          <div class="touchpad-canvas anim-move"><div class="dot"></div></div>
+          <div class="motion-info"><div class="motion-title" data-i18n="g1Move"></div><div class="motion-desc" data-i18n="g1MoveAct"></div></div>
+        </div>
+        <div class="motion-card">
+          <div class="touchpad-canvas anim-tap"><div class="dot"></div></div>
+          <div class="motion-info"><div class="motion-title" data-i18n="g1Tap"></div><div class="motion-desc" data-i18n="g1TapAct"></div></div>
+        </div>
+        <div class="motion-card">
+          <div class="touchpad-canvas anim-drag"><div class="dot"></div></div>
+          <div class="motion-info"><div class="motion-title" data-i18n="g1Drag"></div><div class="motion-desc" data-i18n="g1DragAct"></div></div>
+        </div>
+        <div class="motion-card">
+          <div class="touchpad-canvas anim-2tap"><div class="dot d1"></div><div class="dot d2"></div></div>
+          <div class="motion-info"><div class="motion-title" data-i18n="g2Tap"></div><div class="motion-desc" data-i18n="g2TapAct"></div></div>
+        </div>
+        <div class="motion-card">
+          <div class="touchpad-canvas anim-4tap"><div class="dot d1"></div><div class="dot d2"></div><div class="dot d3"></div><div class="dot d4"></div></div>
+          <div class="motion-info"><div class="motion-title" data-i18n="g4Tap"></div><div class="motion-desc" data-i18n="g4TapAct"></div></div>
+        </div>
       </div>
-      <div class="gesture-card">
-        <div class="gesture-header">✌️ <span data-i18n="g2Finger"></span></div>
-        <div class="gesture-action" data-i18n="g2FingerAct"></div>
+    </div>
+
+    <!-- 分類 2：單指固定 + 第二指輔助操作 -->
+    <div class="gesture-category-block">
+      <div class="category-title-box">
+        <svg viewBox="0 0 24 24"><path d="M9 11.24V7.5a2.5 2.5 0 0 1 5 0v3.74c1.21-.81 2-2.18 2-3.74A4.5 4.5 0 0 0 7 7.5c0 1.56.79 2.93 2 3.74zM18 13h-1.26A6.98 6.98 0 0 0 12 4.08 6.98 6.98 0 0 0 7.26 13H6c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3c0-1.1-.9-2-2-2z"/></svg>
+        <span data-i18n="catHold2nd"></span>
       </div>
-      <div class="gesture-card">
-        <div class="gesture-header">🤌 <span data-i18n="gPinch"></span></div>
-        <div class="gesture-action" data-i18n="gPinchAct"></div>
+      <div class="motion-grid">
+        <div class="motion-card">
+          <div class="touchpad-canvas anim-sec-tap"><div class="dot d1"></div><div class="dot d2"></div></div>
+          <div class="motion-info"><div class="motion-title" data-i18n="gSecTap"></div><div class="motion-desc" data-i18n="gSecTapAct"></div></div>
+        </div>
+        <div class="motion-card">
+          <div class="touchpad-canvas anim-sec-drag"><div class="dot d1"></div><div class="dot d2"></div></div>
+          <div class="motion-info"><div class="motion-title" data-i18n="gSecDrag"></div><div class="motion-desc" data-i18n="gSecDragAct"></div></div>
+        </div>
+        <div class="motion-card">
+          <div class="touchpad-canvas anim-sec-scroll"><div class="dot d1"></div><div class="dot d2"></div></div>
+          <div class="motion-info"><div class="motion-title" data-i18n="gSecScroll"></div><div class="motion-desc" data-i18n="gSecScrollAct"></div></div>
+        </div>
+        <div class="motion-card">
+          <div class="touchpad-canvas anim-sec-swipe"><div class="dot d1"></div><div class="dot d2"></div></div>
+          <div class="motion-info"><div class="motion-title" data-i18n="gSecSwipe"></div><div class="motion-desc" data-i18n="gSecSwipeAct"></div></div>
+        </div>
       </div>
-      <div class="gesture-card">
-        <div class="gesture-header">🤟 <span data-i18n="g3Finger"></span></div>
-        <div class="gesture-action" data-i18n="g3FingerAct"></div>
+    </div>
+
+    <!-- 分類 3：頁面滾動與縮放 -->
+    <div class="gesture-category-block">
+      <div class="category-title-box">
+        <svg viewBox="0 0 24 24"><path d="M12 5.83L15.17 9l1.41-1.41L12 2 7.41 6.59 8.83 8 12 5.83zm0 12.34L8.83 15l-1.41 1.41L12 22l4.59-4.59-1.41-1.41L12 18.17z"/></svg>
+        <span data-i18n="catScroll"></span>
       </div>
-      <div class="gesture-card">
-        <div class="gesture-header">🖐️ <span data-i18n="g4Finger"></span></div>
-        <div class="gesture-action" data-i18n="g4FingerAct"></div>
+      <div class="motion-grid">
+        <div class="motion-card">
+          <div class="touchpad-canvas anim-scroll"><div class="dot d1"></div><div class="dot d2"></div></div>
+          <div class="motion-info"><div class="motion-title" data-i18n="g2Scroll"></div><div class="motion-desc" data-i18n="g2ScrollAct"></div></div>
+        </div>
+        <div class="motion-card">
+          <div class="touchpad-canvas anim-swipe-hori"><div class="dot d1"></div><div class="dot d2"></div></div>
+          <div class="motion-info"><div class="motion-title" data-i18n="g2Swipe"></div><div class="motion-desc" data-i18n="g2SwipeAct"></div></div>
+        </div>
+        <div class="motion-card">
+          <div class="touchpad-canvas anim-zoom"><div class="dot d1"></div><div class="dot d2"></div></div>
+          <div class="motion-info"><div class="motion-title" data-i18n="gZoom"></div><div class="motion-desc" data-i18n="gZoomAct"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 分類 4：系統多工與快捷控制 -->
+    <div class="gesture-category-block">
+      <div class="category-title-box">
+        <svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+        <span data-i18n="catSystem"></span>
+      </div>
+      <div class="motion-grid">
+        <div class="motion-card">
+          <div class="touchpad-canvas anim-3tap"><div class="dot d1"></div><div class="dot d2"></div><div class="dot d3"></div></div>
+          <div class="motion-info">
+            <div class="motion-title" data-i18n="g3Tap"></div>
+            <div class="motion-desc"><code class="kbd">Win + Tab</code><span data-i18n="g3TapAct"></span></div>
+          </div>
+        </div>
+        <div class="motion-card">
+          <div class="touchpad-canvas anim-3vert"><div class="dot d1"></div><div class="dot d2"></div><div class="dot d3"></div></div>
+          <div class="motion-info">
+            <div class="motion-title" data-i18n="g3Vert"></div>
+            <div class="motion-desc"><code class="kbd">Win + D</code><span data-i18n="g3VertAct"></span></div>
+          </div>
+        </div>
+        <div class="motion-card">
+          <div class="touchpad-canvas anim-3hori"><div class="dot d1"></div><div class="dot d2"></div><div class="dot d3"></div></div>
+          <div class="motion-info"><div class="motion-title" data-i18n="g3Hori"></div><div class="motion-desc" data-i18n="g3HoriAct"></div></div>
+        </div>
+        <div class="motion-card">
+          <div class="touchpad-canvas anim-vol">
+            <svg class="vol-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+          </div>
+          <div class="motion-info"><div class="motion-title" data-i18n="gVol"></div><div class="motion-desc" data-i18n="gVolAct"></div></div>
+        </div>
       </div>
     </div>
 
@@ -113,15 +210,24 @@
     <h2 class="section-title" data-i18n="faqTitle"></h2>
     <div class="faq-container">
       <div class="faq-item">
-        <div class="faq-q" data-i18n="faq1Q"></div>
+        <div class="faq-q">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C12.45 11.9 12 12.5 12 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+          <span data-i18n="faq1Q"></span>
+        </div>
         <div class="faq-a" data-i18n="faq1A"></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" data-i18n="faq2Q"></div>
+        <div class="faq-q">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C12.45 11.9 12 12.5 12 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+          <span data-i18n="faq2Q"></span>
+        </div>
         <div class="faq-a" data-i18n="faq2A"></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" data-i18n="faq3Q"></div>
+        <div class="faq-q">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C12.45 11.9 12 12.5 12 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+          <span data-i18n="faq3Q"></span>
+        </div>
         <div class="faq-a" data-i18n="faq3A"></div>
       </div>
     </div>
