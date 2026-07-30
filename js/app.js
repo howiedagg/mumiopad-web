@@ -1,13 +1,11 @@
-/**
- * Mumiopad - 主程式腳本 (已移除多餘 URL 判斷邏輯)
- */
 const CONFIG = {
   githubUrl: 'https://github.com/howiedagg/Mumiopad',
   docUrl: 'https://github.com/howiedagg/Mumiopad/blob/main/README_zh.md',
   playStoreUrl: 'https://play.google.com/store/apps/details?id=com.mumiopad.app',
   // 固定最新下載連結
   downloadUrl: 'https://github.com/howiedagg/mumiopad-web/releases/latest/download/MumiopadSetup.exe',
-  versionJsonUrl: './version.json'
+  // 版號來源:公開 repo latest release 的 version.json(版號單一來源)
+  versionJsonUrl: 'https://github.com/howiedagg/mumiopad-web/releases/latest/download/version.json'
 };
 
 let latestVersion = null;
@@ -21,7 +19,6 @@ window.refreshDownloadButtonText = function() {
   winBtnText.innerText = latestVersion ? `${baseText} (v${latestVersion})` : baseText;
 };
 
-// 只負責讀取版本號，不處理 URL 覆蓋
 async function fetchLatestVersion() {
   try {
     const res = await fetch(`${CONFIG.versionJsonUrl}?t=${Date.now()}`);
