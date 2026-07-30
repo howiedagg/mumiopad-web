@@ -4,8 +4,9 @@ const CONFIG = {
   playStoreUrl: 'https://play.google.com/store/apps/details?id=com.mumiopad.app',
   // 固定最新下載連結
   downloadUrl: 'https://github.com/howiedagg/mumiopad-web/releases/latest/download/MumiopadSetup.exe',
-  // 版號來源:公開 repo latest release 的 version.json(版號單一來源)
-  versionJsonUrl: 'https://github.com/howiedagg/mumiopad-web/releases/latest/download/version.json'
+  // 版號來源:讀公開 repo 的 latest release tag(GitHub API 有 CORS 友善標頭,
+  // release 資產的直接下載連結沒有,不能從前端 fetch)
+  releaseApiUrl: 'https://api.github.com/repos/howiedagg/mumiopad-web/releases/latest'
 };
 
 let latestVersion = null;
@@ -20,16 +21,30 @@ window.refreshDownloadButtonText = function() {
 };
 
 async function fetchLatestVersion() {
+  const CACHE_KEY = 'mumiopad_release';
+  const CACHE_TTL = 10 * 60 * 1000; // 10 分鐘,避免打爆未認證 API 的 60/hr 限制
+
   try {
-    const res = await fetch(`${CONFIG.versionJsonUrl}?t=${Date.now()}`);
+    const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+    const fresh = cached && (Date.now() - cached.t) < CACHE_TTL;
+    if (fresh) {
+      latestVersion = cached.v;
+      window.refreshDownloadButtonText();
+      return;
+    }
+
+    const res = await fetch(CONFIG.releaseApiUrl, { headers: { 'Accept': 'application/vnd.github+json' } });
     if (!res.ok) return;
     const data = await res.json();
-    if (data.version) {
-      latestVersion = data.version;
+    // tag_name 形如 "v0.1.26",去掉前綴 "v"
+    const ver = (data.tag_name || '').replace(/^v/, '');
+    if (ver) {
+      latestVersion = ver;
+      localStorage.setItem(CACHE_KEY, JSON.stringify({ v: ver, t: Date.now() }));
       window.refreshDownloadButtonText();
     }
   } catch (e) {
-    console.log('無法取得 version.json，保持預設按鈕文字。');
+    console.log('無法取得最新版號，保持預設按鈕文字。');
   }
 }
 
