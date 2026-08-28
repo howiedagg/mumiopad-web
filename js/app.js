@@ -2,6 +2,8 @@ const CONFIG = {
   githubUrl: 'https://github.com/howiedagg/Mumiopad',
   docUrl: 'https://github.com/howiedagg/Mumiopad/blob/main/README_zh.md',
   playStoreUrl: 'https://play.google.com/store/apps/details?id=com.mumiopad.app',
+  // Partner Center 上架後填入 Store listing URL；留白時 EXE 維持主要下載。
+  windowsStoreUrl: '',
   // 固定最新下載連結
   downloadUrl: 'https://github.com/howiedagg/mumiopad-web/releases/latest/download/MumiopadSetup.exe',
   // 版號來源:讀公開 repo 的 latest release tag(GitHub API 有 CORS 友善標頭,
@@ -11,14 +13,35 @@ const CONFIG = {
 
 let latestVersion = null;
 
+function hasWindowsStoreListing() {
+  return Boolean(CONFIG.windowsStoreUrl?.trim());
+}
+
 // 更新下載按鈕顯示的文字
 window.refreshDownloadButtonText = function() {
   const winBtnText = document.getElementById('winBtnText');
   if (!winBtnText) return;
 
-  const baseText = translations[currentLang]?.downloadWin || '';
+  const translationKey = hasWindowsStoreListing() ? 'directDownloadWin' : 'downloadWin';
+  const baseText = translations[currentLang]?.[translationKey] || '';
   winBtnText.innerText = latestVersion ? `${baseText} (v${latestVersion})` : baseText;
 };
+
+function configureWindowsDownloadButtons() {
+  const storeButton = document.getElementById('windowsStoreBtn');
+  const directButton = document.getElementById('winDownloadBtn');
+  const hasStore = hasWindowsStoreListing();
+
+  if (storeButton) {
+    storeButton.hidden = !hasStore;
+    if (hasStore) storeButton.href = CONFIG.windowsStoreUrl;
+  }
+  if (directButton) {
+    directButton.classList.toggle('btn-primary', !hasStore);
+    directButton.classList.toggle('btn-secondary', hasStore);
+  }
+  window.refreshDownloadButtonText();
+}
 
 async function fetchLatestVersion() {
   const CACHE_KEY = 'mumiopad_release';
@@ -57,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 2. 初始化語系UI
   updateLanguageUI();
+  configureWindowsDownloadButtons();
 
   // 3. 更新年份
   const yearEl = document.getElementById('year');

@@ -167,6 +167,10 @@ header {
   flex-wrap: wrap;
 }
 
+.btn[hidden] {
+  display: none;
+}
+
 .btn {
   padding: 14px 28px;
   border-radius: 16px;
