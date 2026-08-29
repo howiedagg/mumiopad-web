@@ -1,12 +1,12 @@
 /**
- * Mumiopad - i18n 100% 完整手勢字典
+ * Mumio - i18n 100% 完整手勢字典
  */
 const translations = {
   'zh-TW': {
     heroDesc: '低延遲無線電腦觸控板與極簡手勢控制器，支援 Wi-Fi 區域網路與免驅動藍牙 HID。',
-    downloadWin: '下載 Windows 版',
-    windowsStore: '從 Microsoft Store 安裝',
-    directDownloadWin: '直接下載 EXE（備用）',
+    downloadWin: '下載 Mumio Server',
+    windowsStore: '從 Microsoft Store 安裝 Mumio Server',
+    directDownloadWin: '直接下載 Mumio Server EXE（備用）',
     googlePlay: 'Google Play 下載',
     featureTitle: '雙模無線連線',
     wifiTitle: 'Wi-Fi 區域網路模式',
@@ -47,7 +47,7 @@ const translations = {
     // FAQ
     faqTitle: '常見問題 FAQ',
     faq1Q: 'Windows 跳出 SmartScreen 阻擋怎麼辦？',
-    faq1A: 'Microsoft Store 版由商店驗證並簽署。備用 EXE 目前可能因發行者信譽不足而顯示警告；請只從 Mumiopad 官方網站下載，並確認檔案來源後再決定是否執行。',
+    faq1A: 'Microsoft Store 版由商店驗證並簽署。備用 EXE 目前可能因發行者信譽不足而顯示警告；請只從 Mumio 官方網站下載 Mumio Server，並確認檔案來源後再決定是否執行。',
     faq2Q: '防火牆該如何設定？',
     faq2A: '首次啟動時，若 Windows 防火牆彈出視窗，請務必勾選允許「私人網路」存取，App 才能在同一 Wi-Fi 下搜尋到您的電腦。',
     faq3Q: '藍牙模式連不上該怎麼處理？',
@@ -57,9 +57,9 @@ const translations = {
   },
   'en': {
     heroDesc: 'Low-latency wireless touchpad & minimal gesture controller for PC. Supports Wi-Fi LAN & Driverless Bluetooth HID.',
-    downloadWin: 'Download for Windows',
-    windowsStore: 'Install from Microsoft Store',
-    directDownloadWin: 'Direct EXE Download (Backup)',
+    downloadWin: 'Download Mumio Server',
+    windowsStore: 'Install Mumio Server from Microsoft Store',
+    directDownloadWin: 'Download Mumio Server EXE (Backup)',
     googlePlay: 'Get it on Google Play',
     featureTitle: 'Dual-Mode Wireless Connection',
     wifiTitle: 'Wi-Fi LAN Mode',
@@ -100,7 +100,7 @@ const translations = {
     // FAQ
     faqTitle: 'Frequently Asked Questions',
     faq1Q: 'What if Windows SmartScreen blocks the installer?',
-    faq1A: 'The Microsoft Store version is verified and signed by the Store. The backup EXE may currently show a warning while its publisher reputation is limited; download it only from the official Mumiopad website and verify its source before deciding whether to run it.',
+    faq1A: 'The Microsoft Store version is verified and signed by the Store. The backup EXE may currently show a warning while its publisher reputation is limited; download Mumio Server only from the official Mumio website and verify its source before deciding whether to run it.',
     faq2Q: 'How should I configure Windows Firewall?',
     faq2A: 'When Windows Firewall prompts on first launch, make sure to check "Private networks" so the app can discover your PC over Wi-Fi.',
     faq3Q: 'How to pair in Bluetooth mode?',
