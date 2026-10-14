@@ -5,7 +5,7 @@ const CONFIG = {
   // Partner Center 上架後填入 Store listing URL；留白時 EXE 維持主要下載。
   windowsStoreUrl: '',
   // 舊版 release 的相容下載連結；讀到新版資產後會自動切成 MumioServerSetup.exe。
-  downloadUrl: 'https://github.com/howiedagg/mumiopad-web/releases/latest/download/MumiopadSetup.exe',
+  downloadUrl: 'https://github.com/howiedagg/mumiopad-web/releases/latest/download/MumioServerSetup.exe',
   preferredDownloadAsset: 'MumioServerSetup.exe',
   // 版號來源:讀公開 repo 的 latest release tag(GitHub API 有 CORS 友善標頭,
   // release 資產的直接下載連結沒有,不能從前端 fetch)
