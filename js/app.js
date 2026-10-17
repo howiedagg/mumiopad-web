@@ -4,7 +4,7 @@ const CONFIG = {
   playStoreUrl: 'https://play.google.com/store/apps/details?id=com.mumiopad.app',
   // Partner Center 上架後填入 Store listing URL；留白時 EXE 維持主要下載。
   windowsStoreUrl: '',
-  // 舊版 release 的相容下載連結；讀到新版資產後會自動切成 MumioServerSetup.exe。
+  // 未取得 Release 資訊時，使用固定的正式安裝檔下載連結。
   downloadUrl: 'https://github.com/howiedagg/mumiopad-web/releases/latest/download/MumioServerSetup.exe',
   preferredDownloadAsset: 'MumioServerSetup.exe',
   // 版號來源:讀公開 repo 的 latest release tag(GitHub API 有 CORS 友善標頭,
